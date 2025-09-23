@@ -186,8 +186,13 @@
         </div>
 
         <div class="bugc-video">
-            <iframe src="https://www.youtube.com/embed/vN7W_Bz8oOI" title="YouTube Promo Video"
+            <iframe
+                title="YouTube Promo Video"
+                loading="lazy"
+                src="https://www.youtube.com/embed/vN7W_Bz8oOI"
+                srcdoc='\n                  <style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}a{display:block;height:100%;position:relative}img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:68px;height:48px;background:rgba(0,0,0,0.8);border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.3)}span::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-40%,-50%);border-style:solid;border-width:10px 0 10px 16px;border-color:transparent transparent transparent #fff}</style>\n                  <a href="https://www.youtube.com/embed/vN7W_Bz8oOI?autoplay=1&rel=0" aria-label="Play YouTube video">\n                    <img src="https://i.ytimg.com/vi/vN7W_Bz8oOI/hqdefault.jpg" alt="YouTube thumbnail">\n                    <span></span>\n                  </a>'
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"
                 allowfullscreen>
             </iframe>
         </div>
