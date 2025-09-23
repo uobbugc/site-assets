@@ -1,0 +1,626 @@
+<style>
+    /* scope so we don't fight the whole site */
+    #bugc-scope details {
+        border: 1px solid #ccc !important;
+        border-radius: 8px;
+        background: #f9f9f9 !important;
+        margin-top: 20px;
+        padding: 0;
+        /* we’ll pad the summary/content */
+        overflow: hidden;
+    }
+
+    #bugc-scope summary {
+        cursor: pointer;
+        font-weight: 700;
+        color: #000 !important;
+        background: transparent !important;
+        padding: 10px;
+        list-style: none;
+        /* kill default marker */
+        display: block;
+    }
+
+    /* nuke SU’s arrows/blocks */
+    #bugc-scope summary::-webkit-details-marker {
+        display: none;
+    }
+
+    #bugc-scope summary::marker {
+        content: "";
+    }
+
+    #bugc-scope summary::before,
+    #bugc-scope summary::after {
+        content: none !important;
+        background: none !important;
+    }
+
+    #bugc-scope .bugc-details-body {
+        padding: 10px;
+        line-height: 1.5;
+        background: #fff0;
+    }
+</style>
+
+<div id="bugc-scope" class="bugc">
+
+    <!-- BUGC: Floating Quick Menu -->
+    <details style="position:fixed;right:12px;bottom:12px;z-index:9999;">
+        <summary aria-label="Open quick menu"
+            style="width:52px;height:52px;border-radius:50%;background:#C1001E;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.15);">
+            ☰
+        </summary>
+        <div
+            style="margin-top:8px;background:#fff;border:1px solid #eee;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.15);padding:8px;min-width:180px;">
+            <a href="#trials" style="display:block;padding:8px 10px;text-decoration:none;color:#C1001E;">Trial
+                Lessons</a>
+            <a href="#training" style="display:block;padding:8px 10px;text-decoration:none;color:#333;">Regular
+                Training</a>
+            <a href="#faq" style="display:block;padding:8px 10px;text-decoration:none;color:#333;">FAQ</a>
+            <a href="#contact" style="display:block;padding:8px 10px;text-decoration:none;color:#333;">Contact</a>
+        </div>
+    </details>
+
+
+    <!-- BUGC: Sticky Jump Bar -->
+    <nav id="bugc-jumpbar"
+        style="position:sticky;top:0;z-index:9998;background:#fff;border-bottom:1px solid #eee;box-sizing:border-box;">
+
+        <div
+            style="max-width:1100px;margin:0 auto;padding:8px 10px;display:flex;gap:8px;overflow:auto;scrollbar-width:none;">
+            <a href="#book"
+                style="flex:0 0 auto;padding:8px 12px;background:#C1001E;color:#fff;border:1px solid #C1001E;border-radius:999px;text-decoration:none;font-weight:700;">Book</a>
+            <a href="#about"
+                style="flex:0 0 auto;padding:8px 12px;border:1px solid #C1001E;border-radius:999px;text-decoration:none;color:#C1001E;font-weight:700;">About</a>
+            <a href="#trials"
+                style="flex:0 0 auto;padding:8px 12px;border:1px solid #C1001E;border-radius:999px;text-decoration:none;color:#C1001E;font-weight:700;">Trial
+                Lessons</a>
+            <a href="#training"
+                style="flex:0 0 auto;padding:8px 12px;border:1px solid #C1001E;border-radius:999px;text-decoration:none;color:#C1001E;font-weight:700;">Regular
+                Training</a>
+            <a href="#faq"
+                style="flex:0 0 auto;padding:8px 12px;border:1px solid #C1001E;border-radius:999px;text-decoration:none;color:#C1001E;font-weight:700;">FAQ</a>
+            <a href="#gallery"
+                style="flex:0 0 auto;padding:8px 12px;border:1px solid #C1001E;border-radius:999px;text-decoration:none;color:#C1001E;font-weight:700;">Gallery</a>
+            <a href="#contact"
+                style="flex:0 0 auto;padding:8px 12px;border:1px solid #C1001E;border-radius:999px;text-decoration:none;color:#C1001E;font-weight:700;">Contact</a>
+
+        </div>
+    </nav>
+
+    <!-- Smooth scrolling for anchor jumps -->
+    <style>
+        html {
+            scroll-behavior: smooth
+        }
+    </style>
+
+
+
+
+
+    <!-- <h1 style="text-align: center;"><a href="https://www.bristolsu.org.uk/groups/bristol-university-gliding-club-8475/join" style="display: inline-block; color: #C1001E; text-decoration: underline;">CLICK HERE TO BOOK A TRIAL LESSON</a></h1> -->
+    <p><strong><em><img alt=""
+                    src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/website_image1_compressed.jpg"
+                    style="width: 100%;" /></em></strong></p>
+
+    <a id="about"></a>
+    <div class="section-head">
+        <h2><b>ABOUT US</b></h2>
+    </div>
+
+    <style>
+        /* Scope to this block to avoid clashes */
+        .bugc-wrap {
+            box-sizing: border-box;
+            max-width: 1100px;
+            /* keep things readable on big screens */
+            margin: 0 auto;
+            padding: 0 10px;
+            display: grid;
+            grid-template-columns: 1fr;
+            /* stack by default (mobile-first) */
+            gap: 20px;
+            align-items: start;
+        }
+
+        /* Side-by-side from ~tablet/desktop up */
+        @media (min-width: 900px) {
+            .bugc-wrap {
+                grid-template-columns: 1.2fr 1fr;
+                /* text a bit wider than video */
+            }
+        }
+
+        .bugc-text {
+            line-height: 1.6;
+        }
+
+        /* Video: correct aspect ratio + clamp height on desktops */
+        .bugc-video {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            /* modern browsers keep 16:9 perfectly */
+            max-height: 60vh;
+            /* never gets comically tall on large screens */
+            overflow: hidden;
+        }
+
+        .bugc-video iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Fallback if aspect-ratio unsupported (older browsers) */
+        @supports not (aspect-ratio: 1 / 1) {
+            .bugc-video {
+                height: 0;
+                padding-top: 56.25%;
+            }
+
+            .bugc-video iframe {
+                position: absolute;
+                inset: 0;
+            }
+        }
+    </style>
+
+    <div class="bugc-wrap">
+        <div class="bugc-text">
+            <p>
+                BUGC aims to help you <strong>become a glider pilot</strong>. We organise
+                regular trips to
+                <a href="https://bggc.co.uk/">Bristol and Gloucestershire Club (BGGC)</a>.
+                Here you will undertake your trial and training flights, in 2-seat dual controlled
+                gliders, under the supervision of BGA-qualified instructors.
+            </p>
+            <p>
+                Once you have achieved the solo standard in your training, you'll also gain access
+                to fly <strong>our club-owned single-seat Grob glider</strong>.
+            </p>
+        </div>
+
+        <div class="bugc-video">
+            <iframe src="https://www.youtube.com/embed/vN7W_Bz8oOI" title="YouTube Promo Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <style>
+        /* Scope everything under .bugc to avoid conflicts */
+        .bugc {
+            --bugc-red: #C1001E;
+            --bugc-red-dark: #A00018;
+            --bugc-text: #111;
+            --bugc-muted: #666;
+            --bugc-max: 1100px;
+            --bugc-space: 12px;
+            --bugc-radius: 10px;
+        }
+
+        /* Layout container + rhythm */
+        .bugc .container {
+            max-width: var(--bugc-max);
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+
+        .bugc .stack>*+* {
+            margin-top: calc(var(--bugc-space)*1.2);
+        }
+
+        /* vertical spacing */
+
+        /* Type scale (consistent across the page) */
+        .bugc h2 {
+            font-size: 24px;
+            line-height: 1.25;
+            margin: 0;
+        }
+
+        .bugc h3 {
+            font-size: 18px;
+            line-height: 1.35;
+            margin: 0;
+        }
+
+        .bugc p,
+        .bugc li {
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--bugc-text);
+        }
+
+        /* Section header bar */
+        .bugc .section-head {
+            background: var(--bugc-red-dark);
+            color: #fff;
+            text-align: center;
+            padding: 10px 8px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        /* Button (1 style to rule them all) */
+        .bugc .btn {
+            display: inline-block;
+            background: var(--bugc-red);
+            color: #fff;
+            border: 2px solid var(--bugc-red);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: opacity .2s;
+        }
+
+        .bugc .btn:focus {
+            outline: 2px solid #000;
+            outline-offset: 2px;
+        }
+
+        /* Inline highlight (for prices/keywords) */
+        .bugc .hl {
+            color: var(--bugc-red);
+            font-weight: 700;
+        }
+
+        /* Lists (use bullets instead of leading dashes) */
+        .bugc ul {
+            padding-left: 1.1em;
+            margin: 0;
+        }
+
+        .bugc ul li {
+            list-style: disc;
+        }
+
+        /* Anchor offset for sticky banner */
+        .bugc [id] {
+            scroll-margin-top: 80px;
+        }
+
+        /* Optional: soften huge images under this section */
+        .bugc .fullimg {
+            width: 100%;
+            display: block;
+            border-radius: 8px;
+        }
+    </style>
+
+
+    <br>
+    <a id="trials"></a>
+    <div class="section-head">
+        <h2><b>TRIAL LESSONS</b></h2>
+    </div>
+
+    <p>Fancy an introduction to the world of gliding, see how a glider flies and enjoy the stunning views? Or are you
+        passionate about aviation and looking for your first step in training?</p>
+
+    <h3><strong>BUGC provides student trial flights at a <span
+                style="font-size:18px; color: #C1001E;"><strong>discounted
+                    rate of £81</strong></span><span style="font-size:16px;"><strong>.&nbsp;</strong></span>Which
+            permits:</strong></h3>
+
+    <p>- A <strong>2000ft</strong> (~20min) Aerotow Flight with an Instructor</p>
+
+    <p>- <strong>3 Months</strong> of additional flying at Club Rates if you decide to come back (£10 per winch, 47p per
+        minute)</p>
+
+    <p>Transport to and from the airfield is provided at £3 to cover fuel costs.</p>
+
+    <details>
+        <summary>
+            What do we use the Trial Lesson revenue for?
+        </summary>
+        <div class="bugc-details-body">
+            <p>- Fuel/Insurance costs of your Trial Lesson's tug aircraft</p>
+            <p>- Upkeep of G-CHXM, BUGC's own aircraft</p>
+        </div>
+    </details>
+
+    <br>
+
+    <a id="book"></a>
+    <div style="text-align:center;">
+        <a href="https://drive.google.com/file/d/1fDx55uyK9Tz98wuYw3rs8XDKPNZ9S_yC" style="
+          display: inline-flex;
+          align-items: center;
+          gap: 10px; /* space between icon and text */
+          background: #A00018;
+          color: white;
+          padding: 15px 30px;
+          font-size: 20px;
+          font-weight: bold;
+          border-radius: 8px;
+          text-decoration: none;
+          border: 2px solid #A00018;
+          transition: background 0.3s, color 0.3s;
+       ">
+
+            <!-- Inline SVG icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="22px" height="22px"
+                aria-hidden="true">
+                <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z" />
+                <path d="M5 5h5V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5h-2v5H5V5z" />
+            </svg>
+
+            CLICK HERE TO BOOK
+        </a>
+    </div>
+
+
+
+
+
+
+    <p><img alt=""
+            src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/Slide9_compressed.jpg"
+            style="width: 100%;" /></p>
+
+    <p><img alt=""
+            src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/Slide10_compressed.jpg"
+            style="width: 100%;" /></p>
+
+    <a id="training"></a>
+    <div class="section-head">
+        <h2><b>REGULAR TRAINING</b></h2>
+    </div>
+
+    <p><img alt=""
+            src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/website_image4_compressed.jpg"
+            style="width: 100%;" /></p>
+
+    <p>For new pilots who are willing to continue dedicating their time into the sport, up to solo, BGA
+        Bronze,
+        Silver endorsements, CAA SPL
+        and beyond, please notify us after your Trial Lesson and we will arrange regular training.
+        We usually organise training every weekend (subject to weather).</p>
+
+    <p> If you are already a glider pilot at another airfield / is a powered pilot who would like glider conversion,
+        email
+        us! We are always open to pilots to fly with us during the summer season. Our club is open for all existing
+        experience levels and can provide training beyond Solo at Nympsfield.</p>
+
+    <br>
+
+    <a id="faq"></a>
+    <div class="section-head">
+        <h2><b>FAQ</b></h2>
+    </div>
+    <h2>Booking & Lessons</h2>
+
+    <details>
+        <summary>
+            How do I book a Trial Lesson?
+        </summary>
+        <div class="bugc-details-body">
+            <p>
+                <u>
+                    <a href="https://drive.google.com/file/d/1fDx55uyK9Tz98wuYw3rs8XDKPNZ9S_yC"
+                        style="color: #0000FF; text-decoration: none;">
+                        Here is the booking guide.
+                    </a>
+                </u>
+            </p>
+        </div>
+    </details>
+
+    <details>
+        <summary>
+            What is a Trial Lesson?
+        </summary>
+        <div class="bugc-details-body">
+            <p>A Trial Lesson gives you the chance to experience the sport with an instructor before deciding if you’d
+                like
+                to continue training.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>
+            How long is my Trial Lesson?
+        </summary>
+        <div class="bugc-details-body">
+            <p>Flight time is usually around 20 minutes, depending on conditions. As gliding clubs are volunteer-run, we
+                also ask participants to help with duties on the airfield during the day.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>
+            I was told to sign a declaration. Where is it?
+        </summary>
+        <div class="bugc-details-body">
+            <p>
+                <u>
+                    <a href="https://docs.google.com/document/d/1hXSegrMU96gFbm-n1tjgZdpsDN3juGL2"
+                        style="color: #0000FF; text-decoration: none;">
+                        Here is the declaration
+                    </a>
+                </u>.
+                Send it back to us once you're done.
+            </p>
+        </div>
+    </details>
+
+    <h2>Membership & Fees</h2>
+
+    <details>
+        <summary>
+            What do I get with a BUGC Membership only?
+        </summary>
+        <div class="bugc-details-body">
+            <p>Access to social events, group chats, and regular training (after your trial flight), plus more club
+                benefits.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>
+            What do I get with a Trial Flight + BUGC Membership?
+        </summary>
+        <div class="bugc-details-body">
+            <p>You get your trial flight along with full BUGC membership benefits.</p>
+        </div>
+    </details>
+
+    <details>
+        <summary>
+            Can I pay for just the Trial Flight fee without membership?
+        </summary>
+        <div class="bugc-details-body">
+            <p>No, we require the BUGC membership as part of the base cost for a trial flight.</p>
+        </div>
+    </details>
+
+    <h2> Got more questions? Contact us at the bottom of the page.</h2>
+
+    <br>
+
+    <a id="gallery"></a>
+    <div class="section-head">
+        <h2><b>GALLERY</b></h2>
+    </div>
+    <style type="text/css">
+        /* Container to hold the image grid */
+        #bugc-scope .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(10px, 1fr));
+            gap: 10px;
+        }
+
+        /* Image styling */
+        #bugc-scope .image-grid img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+    <div class="image-grid"><a
+            href="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_1.jpg"
+            target="_blank">
+            <img alt="1"
+                src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_1_compressed.jpg" />
+        </a>
+
+        <a href="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_2.jpg"
+            target="_blank">
+            <img alt="1"
+                src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_2_compressed.jpg" />
+        </a>
+
+        <a href="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_8.jpg"
+            target="_blank">
+            <img alt="1"
+                src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_8_compressed.jpg" />
+        </a>
+
+        <a href="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_6.jpg"
+            target="_blank">
+            <img alt="1"
+                src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_6_compressed.jpg" />
+        </a>
+
+        <a href="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_3.jpg"
+            target="_blank">
+            <img alt="1"
+                src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_3_compressed.jpg" />
+        </a>
+
+        <a href="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_4.jpg"
+            target="_blank">
+            <img alt="1"
+                src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_4_compressed.jpg" />
+        </a>
+
+        <a href="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_5.jpg"
+            target="_blank">
+            <img alt="1"
+                src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_5_compressed.jpg" />
+        </a>
+
+        <a href="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_9.jpg"
+            target="_blank">
+            <img alt="1"
+                src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_9_compressed.jpg" />
+        </a>
+
+        <a href="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_7.jpg"
+            target="_blank">
+            <img alt="1"
+                src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/grid_7_compressed.jpg" />
+        </a>
+    </div>
+
+    <br>
+    <a id="contact"></a>
+    <div class="section-head">
+        <h2><b>CONTACT US</b></h2>
+    </div>
+
+    <p>For any questions related to the content of the Trial Lessons, how to join regular training every weekend, and
+        any
+        other administrative questions, we look forward to hearing from you at:</p>
+
+
+    <div style="display:flex; align-items:center; margin-bottom:-10px;">
+        <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#117;&#111;&#98;&#98;&#117;&#103;&#99;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;"
+            style="display:flex; align-items:center; text-decoration:none;">
+            <img alt="Mail Icon" src="https://cdn3.iconfinder.com/data/icons/font-awesome-solid/512/envelope-256.png"
+                style="width:25px; margin-right:8px; margin-left:0.25%;" />
+            <h2 style="color:#000000; margin:0;">
+                <!-- The text below is reversed in the HTML, then flipped for humans via bidi -->
+                <span style="unicode-bidi:bidi-override; direction:rtl;">moc.liamg@cgubbou</span>
+            </h2>
+        </a>
+    </div>
+
+
+    <div style="display: flex; align-items: center;"><a href="https://www.instagram.com/bristoluni_gliding/?hl=en"><img
+                alt="Mail Icon" src="https://cdn4.iconfinder.com/data/icons/picons-social/57/38-instagram-2-256.png"
+                style="width: 30px; margin-right: 8px;" /> </a>
+
+        <h2 style="color: #000000 !important;"><a
+                href="https://www.instagram.com/bristoluni_gliding/?hl=en">bristoluni_gliding</a></h2>
+        <a href="https://www.instagram.com/bristoluni_gliding/?hl=en"> </a>
+    </div>
+
+
+
+    <br>
+    <div style="display: flex; justify-content: space-between;">
+        <div style="flex: 1;">
+            <p><a href="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/page1.png"
+                    target="_blank"><img alt=""
+                        src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/page1_compressed.jpg"
+                        style="width: 97%;" /> </a></p>
+        </div>
+
+        <div style="flex: 1;">
+            <p><a href="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/page2.png"
+                    target="_blank"><img alt=""
+                        src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/page2_compressed.jpg"
+                        style="width: 97%;" /> </a></p>
+        </div>
+    </div>
+    <br>
+
+    <p><u><strong>2025/26&nbsp;Committee:&nbsp;</strong></u></p>
+
+    <p>Oscar Mannering-Smith, Jamie Roncal, Oliver Ramsay</p>
+    <p>Club Operations: Henrick Ku, Alex Corbett</p>
+
+    <p><img alt=""
+            src="https://raw.githubusercontent.com/uobbugc/site-assets/refs/heads/main/photos/alumni-friends-logo_compressed.jpg"
+            style="width: 20%;  height: 20%;" /></p>
+
+</div>
